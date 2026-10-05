@@ -1,0 +1,12 @@
+.next
+node_modules
+node_modules_broken
+.pnpm-store
+out
+dist
+.env*.local
+*.tsbuildinfo
+.vercel
+.source-materials
+docs/*
+!docs/website-editing.md

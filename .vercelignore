@@ -1,0 +1,10 @@
+.git
+.next
+.vercel
+.source-materials
+.pnpm-store
+node_modules
+node_modules_broken
+docs
+*.tsbuildinfo
+.env*.local
