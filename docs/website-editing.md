@@ -25,7 +25,22 @@
 1. 在编辑器中打开本地项目，修改对应文件并保存。
 2. 在项目目录的终端执行 `pnpm dev`，打开终端显示的本地网址预览。终端保持运行时会自动显示修改。
 3. 检查完成后执行 `pnpm build`，确认没有错误。
-4. 执行以下命令发布更新：
+4. 检查修改文件后，将需要发布的文件提交并推送到 GitHub：
+
+```powershell
+git status
+git add constants/portfolio.ts
+git commit -m "Update portfolio content"
+git push origin master
+```
+
+`git add` 后面应写本次实际修改的文件；例如替换简历后，使用 `git add public/resume/ruilin-hu-resume.pdf`。不要上传私人材料、密码或密钥。
+
+5. Vercel 会自动构建并发布。到 https://vercel.com/big4st/ruilin-hu-portfolio 查看部署状态，成功后同一个网站网址会显示新版内容。
+
+## 手动发布备用方式
+
+通常不需要再手动部署。需要直接从本地发布时，可执行：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\deploy.ps1
@@ -33,7 +48,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\deploy.ps1
 
 也可以在当前项目目录执行 `pnpm dlx vercel@latest --prod --scope big4st`。本地项目已连接到 Vercel 的 `big4st/ruilin-hu-portfolio`，部署会更新同一个公开网址。电脑关闭后，公开网站仍可访问。
 
-只保存本地文件不会自动更新公开网站，需要重新部署。源码仓库已上传到 GitHub，但尚未连接 Vercel 自动部署。Vercel 控制台主要用于管理部署、域名和配置，并不是编辑网页正文的地方。
+源码仓库已连接 Vercel 自动部署，生产分支为 `master`。只保存本地文件不会更新公开网站；推送到 GitHub 后才会自动发布。其他分支用于预览。Vercel 控制台主要用于管理部署、域名和配置，并不是编辑网页正文的地方。优先使用 GitHub 自动部署，以保持线上版本和仓库一致。
 
 如果希望由 Codex 修改，直接说明要改的内容，例如“把简历替换为这个 PDF，并发布到线上”。可以先要求只本地预览，确认后再发布。
 

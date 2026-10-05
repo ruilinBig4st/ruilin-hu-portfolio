@@ -38,22 +38,28 @@ Replace `public/resume/ruilin-hu-resume.pdf` with an updated public version when
 
 ## Deploy
 
-You can deploy directly from this folder to Vercel without GitHub. On Windows:
+The GitHub repository is connected to the existing Vercel project `big4st/ruilin-hu-portfolio`. Pushes to `master` automatically build and deploy to https://ruilin-hu-portfolio.vercel.app/. Other branches create preview deployments.
+
+After editing and checking your changes locally:
+
+```bash
+pnpm build
+git add <changed-files>
+git commit -m "Update portfolio"
+git push origin master
+```
+
+Check the deployment status in https://vercel.com/big4st/ruilin-hu-portfolio. A successful production deployment updates the same website URL. Saving a local file alone does not publish it. Review staged files before committing; never upload private source materials or secrets.
+
+Manual deployment remains available as a fallback on Windows:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\deploy.ps1
 ```
 
-The script checks your login, opens Vercel's login flow if needed, and runs a production deployment. Use your own Vercel account. Accept the detected Next.js settings and choose a project name such as `ruilin-hu-portfolio`. The CLI prints the public HTTPS URL after deployment. Your computer does not need to stay on. Run the same script again to publish updates.
+The script checks your login and runs a production deployment from the local folder. This can publish changes that have not been pushed to GitHub, so prefer the Git workflow above to keep source and production in sync. Your computer does not need to stay on after deployment.
 
 Localhost (`127.0.0.1:3000`) is only a local preview, not a public website.
-
-Alternatively, connect GitHub for automatic deployments:
-
-1. Push this project to GitHub.
-2. Import the repository at `https://vercel.com/new`.
-3. Keep the default Next.js settings.
-4. Deploy.
 
 ## Search Engines
 
